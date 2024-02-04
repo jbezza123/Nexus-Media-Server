@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Show List</title>
+	<link rel="stylesheet" href="static/tv.css">
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var lazyLoadImages = document.querySelectorAll('.lazy-load-poster');
+        var options = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.5
+        };
+        var observer = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var lazyImage = entry.target;
+              lazyImage.src = lazyImage.dataset.src;
+              lazyImage.classList.remove('lazy-load-poster');
+              observer.unobserve(lazyImage);
+            }
+          });
+        }, options);
+        lazyLoadImages.forEach(function(image) {
+          observer.observe(image);
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        // Get all elements with the class 'tv-show-section'
+        var tvShowSections = document.querySelectorAll('.tv-show-section');
+        // Add click event listener to each tv show section
+        tvShowSections.forEach(function(section) {
+          section.addEventListener('click', function() {
+            var showName = section.getAttribute('id').replace('section-', '');
+            var popup = document.getElementById("popup-" + showName);
+            popup.classList.toggle('show');
+          });
+        });
+      });
+    </script>
+    <script>
+      function showSeason(showName, seasonName) {
+        // Hide all episodes-list
+        var episodesLists = document.querySelectorAll('.episodes-list');
+        episodesLists.forEach(function(list) {
+          list.classList.remove('active');
+        });
+        // Show the selected episodes-list
+        var selectedList = document.getElementById(showName[0] + '-' + seasonName);
+        selectedList.classList.add('active');
+      }
+    </script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	// Add click event listener to each close button
+  var closeButtons = document.querySelectorAll('.close-btn');
+  closeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var popup = button.closest('.popup');
+      popup.classList.remove('show');
+    });
+  });
+});
+	</script>
+<script>
+  function get_episode_name(episode) {
+    // Extract the episode number from the original episode name in a case-insensitive manner
+    var match = episode.match(/e(\d+)/i);
+
+    // If a match is found, return "Episode X," otherwise return the original episode name
+    return match ? "Episode " + match[1] : episode;
+  }
+
+  // Function to update text within an element
+  function updateEpisodeText() {
+    var elements = document.getElementsByClassName('episode-text');
+
+    for (var i = 0; i < elements.length; i++) {
+      var originalText = elements[i].innerText;
+      var modifiedText = get_episode_name(originalText);
+      elements[i].innerText = modifiedText;
+    }
+  }
+
+  // Call the function to update episode text when the page is loaded
+  window.onload = updateEpisodeText;
+</script>
+
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">
+        <img src="static/logo.png" alt="Nexus-Media" width="85" height="50">
+      </a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="button">Search</button>
+      </div>
+    </nav>
+    <div id="tv-show-list-container"> {% for show in tv_shows %} <div class="tv-show-section" id="section-{{ show['name'][0] }}-{{ loop.index }}">
+        <img class="poster lazy-load-poster" data-src="tv/{{ show['poster_path'] }}" alt="{{ show['name'] }}">
+      </div>
+      <div class="popup" id="popup-{{ show['name'][0] }}-{{ loop.index }}">
+        <div class="popup-content">
+          <p>{{ show['name'] }}</p>
+          <div class="tabs-container"> {% for season in show['seasons'] %} <div class="tab" onclick="showSeason('{{ show['name'] }}', '{{ season['name'] }}')">{{ season['name'] }}</div>
+            <ul class="episodes-list" id="{{ show['name'][0] }}-{{ season['name'] }}"> {% for episode in season['episodes'] %} <li>
+                <a href="{{ url_for('stream_tv_episode_route', show_name=show['name'], season_name=season['name'], episode_name=episode) }}">
+                  <img class="episode-img" src="{{ url_for('stream_tv_episode_route', show_name=show['name'], season_name=season['name'], episode_name=episode) }}.jpg">
+				  <p class="episode-text">{{ episode }}</p>
+                </a>
+              </li> {% endfor %} </ul> {% endfor %}
+          </div>
+        </div>
+        <div class="close-btn tab">Close</div>
+      </div> {% endfor %}
+    </div>
+  </body>
+</html>

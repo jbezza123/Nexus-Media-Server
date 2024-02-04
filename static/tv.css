@@ -1,0 +1,292 @@
+body {
+        display: flex;
+        flex-direction: row;
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(117, 9, 121, 1) 50%, rgba(0, 212, 255, 1) 100%);
+      }
+
+      #tv-show-list-container {
+        flex: 1;
+        padding: 10px;
+        position: absolute;
+        z-index: -1;
+        top: 60px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      li.tv-show-section {
+        width: 166.67px;
+        height: 250px;
+        margin: 10px;
+        border-style: solid;
+        border-width: 4px;
+        border-color: #00000000;
+        list-style-type: none;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      li:hover {
+        border-color: orange;
+      }
+
+      #film-title {
+        display: none;
+      }
+
+      .poster {
+        border-radius: 7px;
+        height: 250px;
+        width: 166.66px;
+      }
+
+      #vertical-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        background-color: #a600ff3b;
+        position: fixed;
+        top: 10%;
+        border-radius: 25px;
+        color: antiquewhite;
+        z-index: -1;
+      }
+
+      .letter {
+        margin: 5px;
+        cursor: pointer;
+      }
+
+      .letter:hover {
+        color: white;
+      }
+
+      .fa-li {
+        position: relative;
+        left: 0;
+      }
+
+      nav {
+        background-color: #333;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-bottom-width: 5px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(2, 0, 36);
+        background: linear-gradient(4deg, rgba(2, 0, 36, 1) 0%, rgb(39 4 41) 50%, rgb(0 0 0) 100%);
+      }
+
+      .logo {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        margin-right: 5%;
+      }
+
+      input[type="text"] {
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #fff;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+        margin-left: 5px;
+        cursor: pointer;
+      }
+
+      /* Gradient Scroll Bar */
+      /* width */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        border-radius: 100vh;
+        background: #1f2937;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234));
+      }
+
+      .tv-show-section {
+        width: 167px;
+        height: 250px;
+        margin: 10px;
+        border-style: solid;
+        border-width: 4px;
+        border-color: #00000000;
+        list-style-type: none;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .tv-show-section:hover {
+        transform: scale(1.05);
+        border-color: orange;
+      }
+
+      .poster {
+        border-radius: 7px;
+        height: 100%;
+        width: 100%;
+      }
+
+      .popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(117, 9, 121, 1) 50%, rgba(0, 212, 255, 1) 100%);
+        padding-top: 20px;
+        border-radius: 10px;
+        z-index: 2;
+      }
+
+      .popup.show {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .popup-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+		padding-top: 70px;
+      }
+
+      .tab {
+        cursor: pointer;
+        margin: 10px 0;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #333;
+        color: white;
+      }
+
+      .tab:hover {
+        background-color: #555;
+      }
+
+      .episodes-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .episodes-list li {
+        margin: 5px 0;
+		margin: 10px;
+      }
+	  .tab {
+        cursor: pointer;
+        padding: 10px;
+        background-color: #ccc;
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .episodes-list {
+        display: none;
+      }
+
+      .active {
+        display: flex;
+        position: absolute;
+        overflow-y: auto;
+        top: 180px;
+        left: calc(100vw - 95%);
+        width: calc(100% - 10px);
+		flex-wrap: wrap;
+      }
+
+      .tabs-container {
+        display: flex;
+      }
+	  .close-btn{
+		position: absolute;
+		top: 90px;
+		right: 0;
+		margin: 10px;
+	  }
+	  .episode-img{
+		  width: 250px;
+		  height: auto;
+		  border-style: solid;
+		  border-color: #ffebcd00;
+	  }
+	  .episode-img:hover{
+		  border-color: orange;
+	  }
+
+
+@media only screen and (max-device-width: 414px) {
+  /* Styles specific to iPhone screens */
+
+  body {
+    font-size: 16px;
+  }
+  .tv-show-section {
+        width: 150px;
+        height: 240px;
+		}
+		.popup.show {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+	  .close-btn{
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		border-radius: 50%;
+	  }
+	}
+/* Styles for devices with a maximum width of 600 pixels (typical for mobile devices) */
+      @media only screen and (max-width: 932px) {
+        body {
+          font-size: 14px;
+        }
+
+        #vertical-bar {
+          font-size: 8px;
+          top: 15%;
+        }
+
+        li {
+          height: 145px;
+          margin: 1px;
+        }
+      }

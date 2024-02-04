@@ -1,0 +1,233 @@
+.film-popup {
+  opacity: 0;
+  position: fixed;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 5;
+  width: 100%; /* Set width to 100% */
+  height: 100%; /* Set height to 100% */
+  top: 70px; /* Set top to 0 */
+  right: 0; /* Set right to 0 */
+}
+
+.film-popup.show {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.film-popup img.banner {
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.close-btn {
+  cursor: pointer;
+  width: 50px;
+  color: #333;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  z-index: 10;
+}
+.close-btn:hover {
+  filter: invert(100%);
+}
+
+.play-btn{
+  top: calc(50% - 100px);
+  position: fixed;
+  left: calc(50% - 75px);
+  width: 150px;
+  opacity: 0.5;
+}
+.play-btn:hover{
+	
+	opacity: 1;
+}
+
+.pop-poster{
+	
+	    position: fixed;
+    top: 5%;
+    background: blue;
+    left: 5%;
+}
+.cover{
+	background-color: #27001d;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    pointer-events: none;
+	mask-image: linear-gradient(to bottom, transparent, black);
+}
+.plyr{
+	display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+  z-index: 9;
+  background: black;
+}
+
+#film-title {
+    position: fixed;
+    top: 20px;
+    font-size: 50px;
+    width: 700px;
+    text-align: center;
+    text-shadow: 3px 3px 5px #000000;
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+    background: #240426;
+    border-radius: 25px 0 0 25px;
+    right: 0;
+    opacity: 0.9;
+	
+    border-style: solid;
+    border-right: 0;
+}
+.ytlogo{
+	width: 80px;
+    top: 80px;
+    position: absolute;
+	margin-left: 10px;
+}
+
+.ytlogo:hover{
+	filter: invert(100%);
+}
+
+#film-description{
+	position: fixed;
+  top: 150px;
+  width: calc(700px - 13px);
+  right: 0;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #d2d2d2;
+  background: #2b0e2d;
+  border-radius: 25px 0 0 25px;
+  border-style: solid;
+  border-right: 0;
+  padding: 10px;
+  opacity: 0.9;
+}
+
+ol.people.scroller {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  margin-left: -10px;
+  margin-top: -10px;
+  padding-bottom: 10px;
+  opacity: 0.9;
+  background-color: #4e1953;
+  border-radius: 10px;
+}
+
+ol.people {
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 0;
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 0;
+  padding-bottom: 0px;
+  display: flex;
+  flex-wrap: nowrap; /* Ensure the cards stay in a single row */
+  gap: 10px; /* Adjust the gap between cards */
+}
+
+#cast {
+  bottom: 40px;
+  left: 20px;
+  position: fixed;
+  transform: translateY(78%);
+  transition: transform 0.5s ease-in-out;
+}
+
+#cast.active {
+	transform: translateY(0%);
+	
+}
+
+.cast {
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #d2d2d2;
+  background-color: #4e1953;
+  margin-bottom: 0.1%;
+  width: 140px;
+  clip-path: polygon(100% 100%, 0% 100% , 0.00% 100.33%, 2.86% 99.52%, 5.71% 97.12%, 8.57% 93.21%, 11.43% 87.90%, 14.29% 81.38%, 17.14% 73.85%, 20.00% 65.55%, 22.86% 56.76%, 25.71% 47.74%, 28.57% 38.80%, 31.43% 30.22%, 34.29% 22.27%, 37.14% 15.22%, 40.00% 9.28%, 42.86% 4.65%, 45.71% 1.48%, 48.57% -0.13%, 51.43% -0.13%, 54.29% 1.48%, 57.14% 4.65%, 60.00% 9.28%, 62.86% 15.22%, 65.71% 22.27%, 68.57% 30.22%, 71.43% 38.80%, 74.29% 47.74%, 77.14% 56.76%, 80.00% 65.55%, 82.86% 73.85%, 85.71% 81.38%, 88.57% 87.90%, 91.43% 93.21%, 94.29% 97.12%, 97.14% 99.52%, 100.00% 100.33%);
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+ol.people li.card {
+  margin: 10px 4px 10px 10px;
+  border: 1px solid rgba(var(--lightGrey), 1);
+  padding-bottom: 10px;
+  border-radius: var(--imageBorderRadius);
+  overflow: hidden;
+  background: #240625;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #c0bebf;
+  width: 140px;
+  height: 260px;
+}
+
+ol.people li.card a + p {
+  padding: 10px;
+}
+
+.profile {
+  width: 100%;
+}
+
+#card-name{
+	
+	padding: 0px 5px 0px 5px;
+	color: #29c3f2;
+	text-align: center;
+}
+
+.character{
+	padding: 0px 5px 0px 5px;
+	color: #29c3f2;
+	text-align: center;	
+}
+
+
+@media only screen and (max-width: 480px) {
+  /* Adjustments for Phones */
+  #film-title {
+    font-size: 20px;
+    width: 230px;
+	top: 50px;
+	}
+}
+@media only screen and (max-width: 768px) {
+  /* Adjustments for ipads tablets */
+  #film-title {
+    font-size: 40px;
+    width: 380px;
+	top: 50px;
+	}
+}
+@media only screen and (max-width: 1180px) {
+  /* Adjustments for ipads tablets */
+  #film-title {
+    font-size: 40px;
+    width: 550px;
+	top: 50px;
+	}
+}

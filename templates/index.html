@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/popup.css">
+    <link rel="stylesheet" href="static/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <title>Film List</title>
+  </head>
+  <body>
+    <nav>
+      <a href="#" class="logo">
+        <img src="static/logo.png" alt="Nexus-Media" width="85" height="50">
+      </a>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button type="button">Search</button>
+      </div>
+    </nav>
+    <div id="vertical-bar"></div>
+    <div id="film-list-container">
+      <ul> {% for film in films %} <li class="film-section" id="section-{{ film['name'][0] }}">
+          <div class="poster">
+            <img class="lazy-load-poster poster" data-src="{{ film['poster_path'] }}" height="100%">
+          </div>
+          <!-- Film Popup -->
+          <div class="film-popup">
+            <img src="static/button-close.png" class="close-btn">
+            <img class="banner" src="{{ film['banner_path'] }}" alt="{{ film['name'] }} Banner">
+            <div class="cover"></div>
+            <p id="url-for-video" style="visibility: hidden;">/media/{{ film['name'] }}/{{ film['video_file'] }}</p>
+            <p id="url-for-subtitle" style="visibility: hidden;">/media/{{ film['name'] }}/{{ film['subtitle_path'] }}</p>
+            <p id="film-id" style="visibility: hidden;"></p>
+            <p id="film-description"></p>
+            <img class="poster pop-poster" src="{{ film['poster_path'] }}" height="100%">
+            <img src="static/button-play.png" class="play-btn">
+            <video id="video_tag" style="display: none;" class="plyr" controls>
+              <source src="" type="">
+              <track kind="captions" label="English captions" src="" srclang="en" default /> Your browser does not support the video tag.
+            </video>
+            <p id="film-title">{{ film['name'].replace('poster', '') }}</p>
+            <a class="ytlink" href="" target="_blank">
+              <img class="ytlogo" src="/static/YT-logo.png">
+            </a>
+            <div id="cast" onclick="toggleActive(this)">
+              <p class="cast">Cast</p>
+              <ol class="people scroller"></ol>
+            </div>
+          </div>
+        </li> {% endfor %} </ul>
+    </div>
+    <script src="static/index.js"></script>
+  </body>
+</html>
