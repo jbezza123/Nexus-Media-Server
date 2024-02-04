@@ -2,6 +2,16 @@
 
 Nexus Media Server is a Flask-based media server that allows you to list and organize your film and TV show collections. It includes features such as film popups with cast information, subtitles, and TV show season and episode browsing. Please note that this project is intended for educational purposes, and users are encouraged to own the media legally.
 
+Films should be structured as
+- Films/
+    - Film_name (Date)/
+        - Film.mp4
+Tv should be
+- TV/
+    - Show Name (Date)/
+        - Season 1
+          - Episode.mp4
+          - Episode.mp4
 ## Getting Started
 
 ### Prerequisites
